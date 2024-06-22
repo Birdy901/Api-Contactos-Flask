@@ -4,7 +4,7 @@ from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, fields
 class Contactos(db.Model):
     __tablename__ = 'Contactos'
 
-    Id_Contacto = db.Column(db.Integer, primary_key=True, nullable=False)
+    Id_Contacto = db.Column(db.Integer, primary_key=True)
     Nombre = db.Column(db.String(50))
     Direccion = db.Column(db.String)
     Telefono = db.Column(db.Integer)

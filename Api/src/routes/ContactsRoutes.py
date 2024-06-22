@@ -36,6 +36,24 @@ def get_contacto(id):
 
     return jsonify(result)
 
+#Ruta para crear un nuevo contacto
+@main.route('/contactos', methods=['POST'])
+def create_contacto():
+    contacto_data = request.get_json()
+    contacto = Contactos(
+            Id_Contacto = None,
+            Nombre=contacto_data.get('Nombre'),
+            Telefono=contacto_data.get('Telefono'),
+            Email=contacto_data.get('Email'),
+            Direccion=contacto_data.get('Direccion')
+        )
+
+    db.session.add(contacto)
+    db.session.commit()
+
+    result = contacto_schema.dump(contacto)
+    return jsonify(result), 201
+
 #Ruta para editar un contacto por ID
 @main.route('/contactos/<id>', methods=['PUT'])
 def editar_contacto(id):

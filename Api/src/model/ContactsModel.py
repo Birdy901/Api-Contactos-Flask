@@ -7,7 +7,7 @@ class Contactos(db.Model):
     Id_Contacto = db.Column(db.Integer, primary_key=True, nullable=False)
     Nombre = db.Column(db.String(50))
     Direccion = db.Column(db.String)
-    Telefono = db.Column(db.Integer(8))
+    Telefono = db.Column(db.Integer)
     Email = db.Column(db.String)
 
     def __init__(self, Id_Contacto, Nombre, Direccion, Telefono, Email):
@@ -22,6 +22,6 @@ class ContactoSchema(SQLAlchemyAutoSchema):
         model = Contactos
         load_instance = True
 
-libro = fields.Nested(ContactoSchema)
-libro_schema = ContactoSchema
-libros_schema = ContactoSchema(many=True)
+contacto = fields.Nested(ContactoSchema)
+contacto_schema = ContactoSchema()
+contactos_schema = ContactoSchema(many=True)

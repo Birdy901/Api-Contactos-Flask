@@ -14,7 +14,7 @@ def get_contactos():
     return jsonify(result)
 
 #Ruta para llamar todos los contactos con paginado
-@main.route('/contactos', methods=['GET'])
+@main.route('/contactos_paginados', methods=['GET'])
 def get_contactos_paginado():
     #Paginado
     page = request.args.get('page', type=int)
